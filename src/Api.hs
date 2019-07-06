@@ -3,17 +3,21 @@ module Api
   ( Config
   , fetchBuild
   , nextPage
-  , initialBuildsState
   , defaultConfig
+  , fetchWithConfig
+  , fetch
+  , buildsForPage
   )
 where
 
 import           Control.Monad.IO.Class         ( liftIO )
 import           Control.Monad.State.Lazy       ( StateT
+                                                , runStateT
                                                 , get
                                                 , put
                                                 )
 import           Control.Monad.Reader           ( ReaderT
+                                                , runReaderT
                                                 , ask
                                                 )
 import           Network.HTTP.Simple
@@ -29,8 +33,15 @@ defaultConfig = Config { baseUrl        = "https://lotv.spawningtool.com"
                        , buildsEndpoint = "/build"
                        }
 
-initialBuildsState :: (Int, ())
-initialBuildsState = (0, ())
+
+buildsForPage :: Int -> ReaderT Config IO S8.ByteString
+buildsForPage page = onlyPageData <$> runStateT fetchBuild page
+  where onlyPageData (pageData, _) = pageData
+
+fetch = fetchWithConfig defaultConfig
+
+fetchWithConfig :: Config -> ReaderT Config IO S8.ByteString -> IO S8.ByteString
+fetchWithConfig config m = runReaderT m $ config
 
 fetchBuild :: StateT Int (ReaderT Config IO) S8.ByteString
 fetchBuild = do
