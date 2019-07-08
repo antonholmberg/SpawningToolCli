@@ -1,11 +1,10 @@
-{-# LANGUAGE OverloadedStrings #-}
 module Main where
 
-import           Api                            (fetch, buildsForPage)
-import           Control.Monad.State.Lazy       ( runStateT )
-import           Control.Monad.Reader           ( runReaderT )
+import           Api                      (buildsForPage, fetch)
+import           Control.Monad.Reader     (runReaderT)
+import           Control.Monad.State.Lazy (runStateT)
 
 main :: IO ()
 main = do
   page <- fetch $ buildsForPage 0
-  putStrLn $ show page
+  print page
