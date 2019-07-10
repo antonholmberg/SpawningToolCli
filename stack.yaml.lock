@@ -5,12 +5,12 @@
 
 packages:
 - completed:
-    hackage: cli-0.2.0@sha256:82cc2ed5b4af07cffa69f6b2552b32c5e6ba24330d2aed2c55dceb2c4a72805a,1351
+    hackage: argparser-0.3.4@sha256:f277e6d568e88f0698a0ce1f2dc719d90717ffe99c8622302f65389f2a8ed01c,1952
     pantry-tree:
-      size: 695
-      sha256: 1c70b41905cf8169e4ff1b8db222892aecbc61a458d9ee29e84443bacffd71be
+      size: 1449
+      sha256: 8c4dd60221760f9fdc9298baa72ff6cd4ed6ee32353141b04cf243d9286b314e
   original:
-    hackage: cli-0.2.0
+    hackage: argparser-0.3.4
 - completed:
     hackage: hindent-5.3.0@sha256:ba915086b426771debeaf593df4bbd8ab187aff3bfe147cecf82274eec406a2c,3452
     pantry-tree:

@@ -28,7 +28,6 @@ library:
     - http-conduit
     - bytestring
     - tagsoup
-    - cli >= 0.2.0 && < 1.0.0
     - mtl
 
 executables:
@@ -42,6 +41,7 @@ executables:
     dependencies:
       - SpawningToolCli
       - mtl
+      - argparser
 
 tests:
   SpawningToolCli-test:
